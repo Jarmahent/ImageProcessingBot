@@ -1,0 +1,8 @@
+### PROCESSING BOT ###
+
+*.log
+*.pot
+*.pyc
+__pycache__/
+*.idea
+venv/
