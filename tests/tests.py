@@ -24,6 +24,6 @@ class RedditPyTest(unittest.TestCase):
         pimg_secret=imgur_app_secret)
         random_submission = r.get_random_submission()
         HttpsMatch = re.findall(
-        r"(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})",
+        r"(?:http|ftp)s?:\/\/",
         random_submission)
         self.assertEquals(len(HttpsMatch), 1)
