@@ -1,0 +1,17 @@
+proccesing.config:
+  processing.path:
+    java.path: ''
+    sketch.path: ''
+
+  reddit.config:
+    reddit_subreddit: "pics"
+    interval-seconds: 7200
+
+
+  imgur.config:
+    imgur_client_id: ""
+    imgur_app_secret: ""
+
+  reddit.config:
+    reddit_client_id: ""
+    reddit_app_secret: ""
