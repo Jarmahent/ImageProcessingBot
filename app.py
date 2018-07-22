@@ -9,7 +9,6 @@ imgur_app_secret = config["proccesing.config"]["imgur.config"]["imgur_app_secret
 reddit_client_id = config["proccesing.config"]["reddit.config"]["reddit_client_id"]
 reddit_app_secret = config["proccesing.config"]["reddit.config"]["reddit_app_secret"]
 
-print(reddit_app_secret)
 r = redditpy.Reddit(
 app_id=reddit_client_id,
 app_secret=reddit_app_secret,

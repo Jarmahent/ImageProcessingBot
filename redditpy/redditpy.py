@@ -29,7 +29,10 @@ class Reddit():
         return ''.join(random.choice(chars) for _ in range(size))
 
     def get_random_submission(self):
-        return self._reddit.subreddit(self._subreddit).random().url
+        try:
+            return self._reddit.subreddit(self._subreddit).random().url
+        except Exception as e:
+            return e
 
     def process_url(self, url):
         if not ".jpg" in url and "imgur" in url:
