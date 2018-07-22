@@ -11,6 +11,7 @@ proccesing.config:
   imgur.config:
     imgur_client_id: ""
     imgur_app_secret: ""
+    imgur_access_token: ""
 
   reddit.config:
     reddit_client_id: ""

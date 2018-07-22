@@ -15,5 +15,5 @@ app_secret=reddit_app_secret,
 subreddit="pics",
 pimg_id=imgur_client_id,
 pimg_secret=imgur_app_secret)
-
-print(r.get_random_submission())
+upload = r.upload_imgur("./media/preprocessed/test.jpg")
+print(upload.link)
