@@ -12,13 +12,14 @@ class RedditBot:
         reddit_app_secret = config["proccesing.config"]["reddit.config"]["reddit_app_secret"]
         reddit_app_username = config["proccesing.config"]["reddit.config"]["reddit_app_username"]
         reddit_app_password = config["proccesing.config"]["reddit.config"]["reddit_app_password"]
+        subreddit = config["proccesing.config"]["bot.config"]["reddit_subreddit"]
 
         self._redditClass = redditpy.Reddit(
         username=reddit_app_username,
         password=reddit_app_password,
         app_id=reddit_client_id,
         app_secret=reddit_app_secret,
-        subreddit="pics",
+        subreddit=subreddit,
         pimg_id=imgur_client_id,
         pimg_secret=imgur_app_secret)
 
@@ -39,7 +40,8 @@ class RedditBot:
 
 
             #Upload Image to Imgur
-            upload_to_imgur = self._redditClass.upload_imgur(image_path="./media/processed/test.jpg")
+            #Change preprocessed to processed once the processing stage is complete
+            upload_to_imgur = self._redditClass.upload_imgur(image_path="./media/preprocessed/unprocessed.jpg")
             print("Uploading to imgur")
 
             #Post processed image to /r/processingimages

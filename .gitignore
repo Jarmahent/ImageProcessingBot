@@ -12,3 +12,4 @@ media/preprocessed
 media/processed
 !media/processed/test.jpg
 !media/preprocessed/test.jpg
+!media/preprocessed/unprocessed.jpg

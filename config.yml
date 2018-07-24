@@ -3,7 +3,7 @@ proccesing.config:
     java.path: ''
     sketch.path: ''
 
-  reddit.config:
+  bot.config:
     reddit_subreddit: "pics"
     interval-seconds: 7200
 

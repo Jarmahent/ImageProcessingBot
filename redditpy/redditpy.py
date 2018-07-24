@@ -42,13 +42,13 @@ class Reddit():
 
             self._pimg.get_image(id=imgur_url).download(
             path="./media/preprocessed",
-            name=self.generate_name(),
+            name="unprocessed",
             overwrite=False,
             size=None)
 
             print("Base Imgur URL")
         if ".jpg" in url:
-            request.urlretrieve(url, f"./media/preprocessed/{self.generate_name()}.jpg")
+            request.urlretrieve(url, f"./media/preprocessed/unprocessed.jpg")
             print(" JPG format ")
 
     def sleep(self, seconds):
@@ -77,7 +77,7 @@ class Reddit():
         else:
             try:
                 post_to_reddit = self._reddit.subreddit("processingimages").submit(
-                title=self.generate_name(),
+                title=self.generate_name()+self._subreddit,
                 url=url)
                 return post_to_reddit
             except Except as e:
