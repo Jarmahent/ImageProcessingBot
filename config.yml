@@ -9,8 +9,8 @@ proccesing.config:
 
 
   imgur.config:
-    imgur_client_id: "e6158b5ee68c0c2"
-    imgur_app_secret: "c708679575c36a651624d3ac6098d1685b3ea8d4"
+    imgur_client_id: ""
+    imgur_app_secret: ""
     imgur_access_token: ""
 
   reddit.config:
