@@ -19,5 +19,4 @@ app_secret=reddit_app_secret,
 subreddit="pics",
 pimg_id=imgur_client_id,
 pimg_secret=imgur_app_secret)
-post = r.post_image("https://i.imgur.com/VAPyjGZ.jpg")
-print(post)
+sleep = r.sleep(3)

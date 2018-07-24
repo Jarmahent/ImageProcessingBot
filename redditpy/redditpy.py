@@ -57,8 +57,11 @@ class Reddit():
             print(" JPG format ")
 
     def sleep(self, seconds):
-        print('Sleeping for {} {}'.format(seconds, 'seconds'))
-        return time.sleep(seconds)
+        print(f'Sleeping for {seconds} second(s)')
+        for seconds_time in range(1, seconds +1):
+            print(".", end="", flush=True)
+            time.sleep(1)
+        return None
 
     def post_image(self, url, mock=False):
         #Set Mock to True for testing...
