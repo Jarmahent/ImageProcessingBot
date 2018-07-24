@@ -40,3 +40,7 @@ class RedditPyTest(unittest.TestCase):
     def test_download_url(self):
         download = r.download_url("https://i.imgur.com/VAPyjGZ.jpg")
         self.assertEquals(1, 1)
+
+    def test_download_url_nonimgur(self):
+        download_non_imgur = r.download_url("https://www.cytonix.com/v/vspfiles/photos/homepage/1525876425644.jpg")
+        self.assertEquals(1, 1)
