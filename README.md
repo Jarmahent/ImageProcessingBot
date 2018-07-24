@@ -6,3 +6,16 @@
 
 #### Some premade sketches will be used from https://www.openprocessing.org/ please check it out.
 Using the Processing.py Java compiler I am writing processing code in python.
+Ex:
+
+`mouse.py`
+
+```python
+def setup():
+    size(400, 400)
+
+def draw():
+    background(255)
+    fill(0)
+    ellipse(mouseX, mouseY, 50, 50)
+```
