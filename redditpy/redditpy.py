@@ -34,7 +34,7 @@ class Reddit():
     def get_random_submission(self):
         #Get a random submission from the selected subreddit
         try:
-            return self._reddit.subreddit(self._subreddit).random().url
+            return self._reddit.subreddit(self._subreddit).random()
         except Exception as e:
             return e
 
@@ -64,7 +64,10 @@ class Reddit():
         return None
 
     def post_image(self, url, mock=False):
-        #Set Mock to True for testing...
+        '''
+        Post image from url to reddit.com/r/processingimages
+        Set Mock to True for testing...
+        '''
         if mock == True:
             try:
                 post_to_reddit = self._reddit.subreddit("processingimages").submit(
