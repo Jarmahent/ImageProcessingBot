@@ -8,6 +8,7 @@ __pycache__/
 venv/
 env/
 pyprocess.egg-info/
-media/
+media/preprocessed
+media/processed
 !media/processed/test.jpg
 !media/preprocessed/test.jpg
