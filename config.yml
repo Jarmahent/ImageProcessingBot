@@ -9,12 +9,12 @@ proccesing.config:
 
 
   imgur.config:
-    imgur_client_id: "e6158b5ee68c0c2"
-    imgur_app_secret: "9d05113ee2b8d206dc801f684b9003e9c5e356b1"
+    imgur_client_id: ""
+    imgur_app_secret: ""
     imgur_access_token: ""
 
   reddit.config:
-    reddit_app_username: "jarmahent"
-    reddit_app_password: "Laurh2335"
-    reddit_client_id: "_WngNJOQMibU4w"
-    reddit_app_secret: "rWUJTCE5Liwh3P2OHcNGhv2G46I"
+    reddit_app_username: ""
+    reddit_app_password: ""
+    reddit_client_id: ""
+    reddit_app_secret: ""
