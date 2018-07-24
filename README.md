@@ -19,3 +19,6 @@ def draw():
     fill(0)
     ellipse(mouseX, mouseY, 50, 50)
 ```
+Using the commandline Processing Java compiler:
+
+`java -jar processing-py.jar mouse.py`
