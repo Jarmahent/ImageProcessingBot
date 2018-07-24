@@ -8,6 +8,10 @@
 Using the Processing.py Java compiler I am writing processing code in python.
 Ex:
 
+Using the commandline Processing Java compiler:
+
+`java -jar processing-py.jar mouse.py`
+
 `mouse.py`
 
 ```python
@@ -19,6 +23,3 @@ def draw():
     fill(0)
     ellipse(mouseX, mouseY, 50, 50)
 ```
-Using the commandline Processing Java compiler:
-
-`java -jar processing-py.jar mouse.py`
