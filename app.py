@@ -41,7 +41,7 @@ class RedditBot:
             #Upload Image to Imgur
             upload_to_imgur = self._redditClass.upload_imgur(image_path="./media/processed/test.jpg")
             print("Uploading to imgur")
-
+            print("Git test change")
 
             #Post processed image to /r/processingimages
             print("Posting to Reddit...")
