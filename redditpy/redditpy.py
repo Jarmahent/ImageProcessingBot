@@ -22,11 +22,6 @@ class Reddit():
             client_id = kwargs["pimg_id"],
             client_secret = kwargs["pimg_secret"]
         )
-        self._localDirectory = os.path.expanduser("~")
-        if not os.path.exists(os.path.join(self._localDirectory, "Pictures", "PyPics")):
-            os.makedirs(os.path.join(self._localDirectory, "Pictures", "PyPics"))
-            print("Creating Path for pictures... \n Path created in Pictures directory")
-
 
     def generate_name(self, size=randint(3, 10), chars=string.ascii_uppercase + string.digits):  # Create a random name
         return ''.join(random.choice(chars) for _ in range(size))
@@ -34,7 +29,7 @@ class Reddit():
     def get_random_submission(self):
         #Get a random submission from the selected subreddit
         try:
-            return self._reddit.subreddit(self._subreddit).random()
+            return self._reddit.subreddit(self._subreddit).random().url
         except Exception as e:
             return e
 
@@ -46,14 +41,14 @@ class Reddit():
             print(imgur_url)
 
             self._pimg.get_image(id=imgur_url).download(
-            path=os.path.join(self._localDirectory, "Pictures", "PyPics"),
+            path="./media/preprocessed",
             name=self.generate_name(),
             overwrite=False,
             size=None)
 
             print("Base Imgur URL")
         if ".jpg" in url:
-            request.urlretrieve(url, os.path.join(self._localDirectory, "Pictures", "PyPics") + "{}{}{}".format("\\", self.generate_name(), ".jpg"))
+            request.urlretrieve(url, f"./media/preprocessed/{self.generate_name()}.jpg")
             print(" JPG format ")
 
     def sleep(self, seconds):

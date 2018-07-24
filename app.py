@@ -25,7 +25,7 @@ class RedditBot:
     def run(self):
         try:
             #Retrieve A random Submission from the subreddit
-            random_submission_url = self._redditClass.get_random_submission().url
+            random_submission_url = self._redditClass.get_random_submission()
             print("Getting random url...")
 
 

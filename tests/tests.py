@@ -36,4 +36,7 @@ class RedditPyTest(unittest.TestCase):
     def test_post_reddit(self):
         post_reddit_test = r.post_image("https://i.imgur.com/VAPyjGZ.jpg", mock=True)
         self.assertEquals(post_reddit_test, None)
-        
+
+    def test_download_url(self):
+        download = r.download_url("https://i.imgur.com/VAPyjGZ.jpg")
+        self.assertEquals(1, 1)
