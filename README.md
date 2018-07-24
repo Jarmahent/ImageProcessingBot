@@ -5,3 +5,4 @@
 #### This bot uses the Processing language to take an a randomly selected image from any subreddit on Reddit.com and alters it.
 
 #### Some premade sketches will be used from https://www.openprocessing.org/ please check it out.
+Using the Processing.py Java compiler I am writing processing code in python.
