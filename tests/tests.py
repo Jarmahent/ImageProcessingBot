@@ -10,8 +10,12 @@ imgur_client_id = config["proccesing.config"]["imgur.config"]["imgur_client_id"]
 imgur_app_secret = config["proccesing.config"]["imgur.config"]["imgur_app_secret"]
 reddit_client_id = config["proccesing.config"]["reddit.config"]["reddit_client_id"]
 reddit_app_secret = config["proccesing.config"]["reddit.config"]["reddit_app_secret"]
+reddit_app_username = config["proccesing.config"]["reddit.config"]["reddit_app_username"]
+reddit_app_password = config["proccesing.config"]["reddit.config"]["reddit_app_password"]
 
 r = redditpy.Reddit(
+username=reddit_app_username,
+password=reddit_app_password,
 subreddit="pics",
 app_id=reddit_client_id,
 app_secret=reddit_app_secret,
@@ -26,6 +30,10 @@ class RedditPyTest(unittest.TestCase):
 
     def test_post_imgur(self):
         image_url = str(r.upload_imgur("./media/preprocessed/test.jpg").link)
-        print(image_url)
         HttpsMatch = re.findall(r"(?:http|ftp)s?:\/\/", image_url)
         self.assertEquals(len(HttpsMatch), 1)
+
+    def test_post_reddit(self):
+        post_reddit_test = r.post_image("https://i.imgur.com/VAPyjGZ.jpg", mock=True)
+        self.assertEquals(post_reddit_test, None)
+        

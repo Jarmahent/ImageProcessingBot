@@ -12,6 +12,8 @@ class Reddit():
         self._subreddit = kwargs["subreddit"]
 
         self._reddit = PrawReddit(
+            username=kwargs["username"],
+            password=kwargs["password"],
             client_id=kwargs["app_id"],
             client_secret=kwargs["app_secret"],
             user_agent="Reddit processing bot"
@@ -58,14 +60,31 @@ class Reddit():
         print('Sleeping for {} {}'.format(seconds, 'seconds'))
         return time.sleep(seconds)
 
-    def post_image(self, processed_image):
-        self._reddit.subreddit(self._subreddit).submit(
-        title=generate_name(),
-        selftext='',
-         url="")
-        pass
+    def post_image(self, url, mock=False):
+        #Set Mock to True for testing...
+        if mock == True:
+            try:
+                post_to_reddit = self._reddit.subreddit("processingimages").submit(
+                title=self.generate_name(),
+                url=url)
+                print("Created submission...")
+                delete_post = self._reddit.submission(id=str(post_to_reddit)).delete()
+                print("Deleted Submission... \n Mock=True")
+                return delete_post
+            except Exception as e:
+                return e
+        else:
+            try:
+                post_to_reddit = self._reddit.subreddit("processingimages").submit(
+                title=self.generate_name(),
+                url=url)
+                return post_to_reddit
+            except Except as e:
+                return e
+
 
     def upload_imgur(self, image_path=None):
+        #Upload image to Imgur
         try:
             image_upload = self._pimg.upload_image(image_path, title=self.generate_name())
             return image_upload
