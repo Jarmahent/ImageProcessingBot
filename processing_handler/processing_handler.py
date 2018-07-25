@@ -14,6 +14,6 @@ class P5:
             return e
 
 
-if __name__ == "__main__":
-    run = P5()
-    run.run_sketch("mouse")
+# if __name__ == "__main__":
+#     run = P5()
+#     run.run_sketch("mouse")
