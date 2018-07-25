@@ -48,7 +48,7 @@ class Reddit():
 
             print("Base Imgur URL")
         if ".jpg" in url:
-            request.urlretrieve(url, f"./media/preprocessed/unprocessed.jpg")
+            request.urlretrieve(url, f"./media/preprocessed/preprocessed.jpg")
             print(" JPG format ")
 
     def sleep(self, seconds):

@@ -1,6 +1,6 @@
 from redditpy import redditpy
 import yaml
-
+from processing_handler.processing_handler import P5
 class RedditBot:
     def __init__(self):
         with open("config.yml", "r") as ymlconfig:
@@ -25,6 +25,7 @@ class RedditBot:
 
     def run(self):
         try:
+
             #Retrieve A random Submission from the subreddit
             random_submission_url = self._redditClass.get_random_submission()
             print("Getting random url...")
@@ -36,12 +37,14 @@ class RedditBot:
             preprocessed_download = self._redditClass.download_url(random_submission_url)
             #Process that Image using processing ~Todo: pick a random sketch to process with...~
             #Push processed image into /media/processed folder
-
+            sketch = P5()
+            print("Running sketch...")
+            sketch.run_sketch("template_circle")
 
 
             #Upload Image to Imgur
             #Change preprocessed to processed once the processing stage is complete
-            upload_to_imgur = self._redditClass.upload_imgur(image_path="./media/preprocessed/unprocessed.jpg")
+            upload_to_imgur = self._redditClass.upload_imgur(image_path="./media/processed/processed.png")
             print("Uploading to imgur")
 
             #Post processed image to /r/processingimages
