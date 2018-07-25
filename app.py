@@ -50,7 +50,7 @@ class RedditBot:
             #Post processed image to /r/processingimages
             print("Posting to Reddit...")
             post_to_reddit = self._redditClass.post_image(upload_to_imgur.link)
-
+            comment_info = self._redditClass.comment_info(id=str(post_to_reddit), data=f"Original Image: {random_submission_url}")
             return post_to_reddit
         except Exception as e:
             return e

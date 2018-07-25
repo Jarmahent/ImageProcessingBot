@@ -91,3 +91,10 @@ class Reddit():
             return image_upload
         except Exception as e:
             return e
+
+    def comment_info(self, id=None, data=None):
+        try:
+            submission = self._reddit.submission(id=id).reply(data)
+            return submission
+        except Exception as e:
+            return e
