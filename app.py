@@ -6,13 +6,13 @@ class RedditBot:
         with open("config.yml", "r") as ymlconfig:
             config = yaml.load(ymlconfig)
 
-        imgur_client_id = config["proccesing.config"]["imgur.config"]["imgur_client_id"]
-        imgur_app_secret = config["proccesing.config"]["imgur.config"]["imgur_app_secret"]
-        reddit_client_id = config["proccesing.config"]["reddit.config"]["reddit_client_id"]
-        reddit_app_secret = config["proccesing.config"]["reddit.config"]["reddit_app_secret"]
-        reddit_app_username = config["proccesing.config"]["reddit.config"]["reddit_app_username"]
-        reddit_app_password = config["proccesing.config"]["reddit.config"]["reddit_app_password"]
-        subreddit = config["proccesing.config"]["bot.config"]["reddit_subreddit"]
+        imgur_client_id = config["processing.config"]["imgur.config"]["imgur_client_id"]
+        imgur_app_secret = config["processing.config"]["imgur.config"]["imgur_app_secret"]
+        reddit_client_id = config["processing.config"]["reddit.config"]["reddit_client_id"]
+        reddit_app_secret = config["processing.config"]["reddit.config"]["reddit_app_secret"]
+        reddit_app_username = config["processing.config"]["reddit.config"]["reddit_app_username"]
+        reddit_app_password = config["processing.config"]["reddit.config"]["reddit_app_password"]
+        subreddit = config["processing.config"]["bot.config"]["reddit_subreddit"]
 
         self._redditClass = redditpy.Reddit(
         username=reddit_app_username,
@@ -51,6 +51,7 @@ class RedditBot:
             print("Posting to Reddit...")
             post_to_reddit = self._redditClass.post_image(upload_to_imgur.link)
             comment_info = self._redditClass.comment_info(id=str(post_to_reddit), data=f"Original Image: {random_submission_url}")
+            self._redditClass.sleep(seconds=30)
             return post_to_reddit
         except Exception as e:
             return e
@@ -61,4 +62,5 @@ class RedditBot:
 
 if __name__ == "__main__":
     bot = RedditBot()
-    bot.run()
+    while True:
+        bot.run()

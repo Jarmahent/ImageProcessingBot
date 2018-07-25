@@ -6,12 +6,14 @@ import re
 
 with open("config.yml", "r") as configFile:
     config = yaml.load(configFile)
-imgur_client_id = config["proccesing.config"]["imgur.config"]["imgur_client_id"]
-imgur_app_secret = config["proccesing.config"]["imgur.config"]["imgur_app_secret"]
-reddit_client_id = config["proccesing.config"]["reddit.config"]["reddit_client_id"]
-reddit_app_secret = config["proccesing.config"]["reddit.config"]["reddit_app_secret"]
-reddit_app_username = config["proccesing.config"]["reddit.config"]["reddit_app_username"]
-reddit_app_password = config["proccesing.config"]["reddit.config"]["reddit_app_password"]
+imgur_client_id = config["processing.config"]["imgur.config"]["imgur_client_id"]
+imgur_app_secret = config["processing.config"]["imgur.config"]["imgur_app_secret"]
+reddit_client_id = config["processing.config"]["reddit.config"]["reddit_client_id"]
+reddit_app_secret = config["processing.config"]["reddit.config"]["reddit_app_secret"]
+reddit_app_username = config["processing.config"]["reddit.config"]["reddit_app_username"]
+reddit_app_password = config["processing.config"]["reddit.config"]["reddit_app_password"]
+sleep_interval = config["processing.config"]["bot.config"]["interval-seconds"]
+
 
 r = redditpy.Reddit(
 username=reddit_app_username,
@@ -26,21 +28,24 @@ class RedditPyTest(unittest.TestCase):
     def test_get_url(self):
         random_submission = r.get_random_submission()
         HttpsMatch = re.findall(r"(?:http|ftp)s?:\/\/", random_submission)
-        self.assertEquals(len(HttpsMatch), 1)
+        self.assertEqual(len(HttpsMatch), 1)
 
     def test_post_imgur(self):
         image_url = str(r.upload_imgur("./media/preprocessed/test.jpg").link)
         HttpsMatch = re.findall(r"(?:http|ftp)s?:\/\/", image_url)
-        self.assertEquals(len(HttpsMatch), 1)
+        self.assertEqual(len(HttpsMatch), 1)
 
     def test_post_reddit(self):
         post_reddit_test = r.post_image("https://i.imgur.com/VAPyjGZ.jpg", mock=True)
-        self.assertEquals(post_reddit_test, None)
+        self.assertEqual(post_reddit_test, None)
 
     def test_download_url(self):
         download = r.download_url("https://i.imgur.com/VAPyjGZ.jpg")
-        self.assertEquals(1, 1)
+        self.assertEqual(1, 1)
 
     def test_download_url_nonimgur(self):
         download_non_imgur = r.download_url("https://www.cytonix.com/v/vspfiles/photos/homepage/1525876425644.jpg")
-        self.assertEquals(1, 1)
+        self.assertEqual(1, 1)
+
+    def test_interval_seconds(self):
+        self.assertEqual(int(sleep_interval), 10)

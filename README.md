@@ -1,6 +1,6 @@
 ![alt text](https://i.imgur.com/yztjtDY.png "Logo Title Text 1")
 
-## Processing Images Bot for Reddit /r/processingimages `V1.0.1`
+## Processing Images Bot for Reddit /r/processingimages `V1.0.2`
 
 #### This bot uses the Processing language to take an a randomly selected image from any subreddit on Reddit.com and alters it.
 
@@ -10,3 +10,6 @@ Using the Processing.py Java compiler I am writing processing code in python.
 
 #### `V1.0.1` Changes:
 `-- Bot now post original Image imgur link as comment`
+
+#### `V1.0.2` Changes:
+`-- Bot now has a config function to sleep for x seconds`

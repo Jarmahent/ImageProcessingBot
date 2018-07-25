@@ -1,11 +1,11 @@
-proccesing.config:
+processing.config:
   processing.path:
     java.path: ''
     sketch.path: ''
 
   bot.config:
     reddit_subreddit: "pics"
-    interval-seconds: 7200
+    interval-seconds: "10"
 
 
   imgur.config:

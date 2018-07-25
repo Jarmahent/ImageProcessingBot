@@ -51,12 +51,15 @@ class Reddit():
             request.urlretrieve(url, f"./media/preprocessed/preprocessed.jpg")
             print(" JPG format ")
 
-    def sleep(self, seconds):
-        print(f'Sleeping for {seconds} second(s)')
-        for seconds_time in range(1, seconds +1):
-            print(".", end="", flush=True)
-            time.sleep(1)
-        return None
+    def sleep(self, seconds=None):
+        try:
+            print(f'Sleeping for {seconds} second(s)')
+            for seconds_time in range(1, seconds +1):
+                print(".", end="", flush=True)
+                time.sleep(1)
+            return None
+        except Exception as e:
+            return e
 
     def post_image(self, url, mock=False):
         '''
