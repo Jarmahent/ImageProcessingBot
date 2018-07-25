@@ -15,6 +15,6 @@ proccesing.config:
 
   reddit.config:
     reddit_app_username: ""
-    reddit_app_password: "!"
+    reddit_app_password: ""
     reddit_client_id: ""
     reddit_app_secret: ""
