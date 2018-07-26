@@ -4,8 +4,9 @@ processing.config:
     sketch.path: ''
 
   bot.config:
-    reddit_subreddit: "pics"
-    interval-seconds: "10"
+    loop: True
+    reddit_subreddit: "art"
+    interval-seconds: 30
 
 
   imgur.config:

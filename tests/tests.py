@@ -48,4 +48,4 @@ class RedditPyTest(unittest.TestCase):
         self.assertEqual(1, 1)
 
     def test_interval_seconds(self):
-        self.assertEqual(int(sleep_interval), 10)
+        self.assertEqual(sleep_interval, 7200)

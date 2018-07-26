@@ -13,6 +13,8 @@ class RedditBot:
         reddit_app_username = config["processing.config"]["reddit.config"]["reddit_app_username"]
         reddit_app_password = config["processing.config"]["reddit.config"]["reddit_app_password"]
         subreddit = config["processing.config"]["bot.config"]["reddit_subreddit"]
+        self._sleep_interval = config["processing.config"]["bot.config"]["interval-seconds"]
+        self._loop_boolean = config["processing.config"]["bot.config"]["loop"]
 
         self._redditClass = redditpy.Reddit(
         username=reddit_app_username,
@@ -26,8 +28,10 @@ class RedditBot:
     def run(self):
         try:
 
+
             #Retrieve A random Submission from the subreddit
             random_submission_url = self._redditClass.get_random_submission()
+            #print(random_submission_url)
             print("Getting random url...")
 
 
@@ -35,6 +39,9 @@ class RedditBot:
             #Download that submission into /media/preprocessed
             print("Downloading to /media/preprocessed")
             preprocessed_download = self._redditClass.download_url(random_submission_url)
+            print(preprocessed_download)
+
+
             #Process that Image using processing ~Todo: pick a random sketch to process with...~
             #Push processed image into /media/processed folder
             sketch = P5()
@@ -50,8 +57,15 @@ class RedditBot:
             #Post processed image to /r/processingimages
             print("Posting to Reddit...")
             post_to_reddit = self._redditClass.post_image(upload_to_imgur.link)
+            print(post_to_reddit)
+
+            #Post a comment on the new Submission with the link to the original image
             comment_info = self._redditClass.comment_info(id=str(post_to_reddit), data=f"Original Image: {random_submission_url}")
-            self._redditClass.sleep(seconds=30)
+
+            #Sleep for x seconds
+            if self._loop_boolean == True:
+                self._redditClass.sleep(self._sleep_interval)
+            
             return post_to_reddit
         except Exception as e:
             return e
@@ -62,5 +76,9 @@ class RedditBot:
 
 if __name__ == "__main__":
     bot = RedditBot()
+    with open("config.yml", "r") as ymlconfig:
+        loop = yaml.load(ymlconfig)
+    loop_boolean = loop["processing.config"]["bot.config"]["loop"]
     while True:
         bot.run()
+        if loop_boolean == False: break
