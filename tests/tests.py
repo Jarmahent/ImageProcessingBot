@@ -3,6 +3,7 @@ import unittest
 import yaml
 from redditpy import redditpy
 import re
+from processing_handler.processing_handler import P5
 
 with open("config.yml", "r") as configFile:
     config = yaml.load(configFile)
@@ -45,4 +46,14 @@ class RedditPyTest(unittest.TestCase):
 
     def test_download_url_nonimgur(self):
         download_non_imgur = r.download_url("https://www.cytonix.com/v/vspfiles/photos/homepage/1525876425644.jpg")
+        self.assertEqual(1, 1)
+
+
+
+class ProcessingPyTest(unittest.TestCase):
+    # python -m unittest tests.tests.ProcessingPyTest.test_processing_sketch single test
+    #rectMode(CORNER)
+    def test_processing_sketch(self):
+        sketch = P5()
+        sketch.run_sketch("template_test")
         self.assertEqual(1, 1)

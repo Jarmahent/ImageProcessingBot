@@ -27,8 +27,6 @@ class RedditBot:
 
     def run(self):
         try:
-
-
             #Retrieve A random Submission from the subreddit
             random_submission_url = self._redditClass.get_random_submission()
             #print(random_submission_url)
@@ -65,7 +63,7 @@ class RedditBot:
             #Sleep for x seconds
             if self._loop_boolean == True:
                 self._redditClass.sleep(self._sleep_interval)
-            
+
             return post_to_reddit
         except Exception as e:
             return e

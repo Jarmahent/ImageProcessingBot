@@ -2,6 +2,11 @@ processing.config:
   processing.path:
     java.path: ''
     sketch.path: ''
+    sketches:
+      - "template_circle"
+      - "template_rect"
+      - "template_circle_random"
+      - "template_circlerect"
 
   bot.config:
     loop: True
