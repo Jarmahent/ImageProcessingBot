@@ -37,8 +37,9 @@ processing.config:
 
 ### How the naming system works:
 ### `< randomly generated ID >+< subreddit name >`
+#### Ex: `< QWCUF7W9 >< art >`
 
-Ex: `< QWCUF7W9 >< art >`
+---
 
 #### `V1.0.1` Changes:
 `-- Bot now post original Image imgur link as comment`
