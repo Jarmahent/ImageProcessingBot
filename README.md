@@ -8,6 +8,31 @@
 
 Using the Processing.py Java compiler I am writing processing code in python.
 
+### `Config.yml` If you wish to use this bot here is the configuration.
+```yaml
+processing.config:
+  processing.path:
+    java.path: ''   #Not implemented yet
+    sketch.path: ''  #Not implmented yet
+
+  bot.config:
+    loop: True
+    reddit_subreddit: "art" #subreddit to pick random submissions from
+    interval-seconds: 30  #Loop interval for bot
+
+
+  imgur.config:
+    imgur_client_id: ""
+    imgur_app_secret: "" 
+    imgur_access_token: "" #Not required if you're using pyimgur
+
+  reddit.config:
+    reddit_app_username: ""  #In order to make submissions a username is required 
+    reddit_app_password: ""   #In order to make submissions a password is required 
+    reddit_client_id: ""  
+    reddit_app_secret: ""
+```
+
 #### `V1.0.1` Changes:
 `-- Bot now post original Image imgur link as comment`
 
