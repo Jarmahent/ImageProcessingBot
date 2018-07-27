@@ -16,7 +16,7 @@ processing.config:
     sketch.path: ''  #Not implmented yet
 
   bot.config:
-    loop: True
+    loop: True #Run bot to loop once or not
     reddit_subreddit: "art" #subreddit to pick random submissions from
     interval-seconds: 30  #Loop interval for bot
 
