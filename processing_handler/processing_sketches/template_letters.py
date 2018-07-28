@@ -8,8 +8,7 @@ def setup():
     global img
 
     pixelSkip = 10
-    alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    alphabetSplit = list(alphabet)
+    alphabetSplit = list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
     img = loadImage("media/preprocessed/preprocessed.jpg")
     noStroke()
@@ -24,7 +23,6 @@ def draw():
             fill(c)
             random_letter = alphabetSplit[int(random(len(alphabetSplit)))]
             textSize(15)
-
             text(random_letter, x, y)
 
     save("../../media/processed/processed.png")

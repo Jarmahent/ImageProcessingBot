@@ -53,7 +53,7 @@ class RedditBot:
             sketch.run_sketch(random_template)
 
 
-            #Upload Image to Imgur
+            #Upload Image to Imgur   MIGHT CHANGE SOON BECUASE COMPRESSION ISSUES
             #Change preprocessed to processed once the processing stage is complete
             print("Uploading to imgur")
             upload_to_imgur = self._redditClass.upload_imgur(image_path="./media/processed/processed.png")

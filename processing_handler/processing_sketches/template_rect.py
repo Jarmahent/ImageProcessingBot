@@ -1,7 +1,7 @@
 
 def setup():
     global img
-    img = loadImage("../media/preprocessed/preprocessed.jpg")
+    img = loadImage("media/preprocessed/mona.jpg")
     this.surface.setSize(img.width, img.height)
     #global output
     #output = createWriter("positions.txt")

@@ -1,6 +1,6 @@
 def setup():
     global img
-    img = loadImage("media/preprocessed/preprocessed.jpg")
+    img = loadImage("media/preprocessed/mona.jpg")
     this.surface.setSize(img.width, img.height)
 
     #global output
@@ -9,7 +9,7 @@ def setup():
 
 def draw():
     spacing = 20
-    this.surface.setVisible(False);
+    # this.surface.setVisible(False);
     colorMode(HSB, 360, 100, 100)
     for y in range(0, img.height, spacing):
         for x in range(0, img.width, spacing):

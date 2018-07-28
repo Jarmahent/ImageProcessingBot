@@ -58,5 +58,5 @@ class ProcessingPyTest(unittest.TestCase):
     #rectMode(CORNER) TO ALIGN THE CIRCLES
     def test_processing_sketch(self):
         sketch = P5()
-        sketch.run_sketch("template_letters")
+        sketch.run_sketch("template_test")
         self.assertEqual(1, 1)
