@@ -23,12 +23,12 @@ processing.config:
 
   imgur.config:
     imgur_client_id: ""
-    imgur_app_secret: "" 
+    imgur_app_secret: ""
     imgur_access_token: "" #Not required if you're using pyimgur
 
   reddit.config:
-    reddit_app_username: ""  #In order to make submissions a username is required 
-    reddit_app_password: ""   #In order to make submissions a password is required 
+    reddit_app_username: ""  #In order to make submissions a username is required
+    reddit_app_password: ""   #In order to make submissions a password is required
     reddit_client_id: ""  
     reddit_app_secret: ""
 ```
@@ -42,7 +42,10 @@ processing.config:
 ---
 
 #### `V1.0.1` Changes:
-`-- Bot now post original Image imgur link as comment`
+`-- Bot now post original Image Imgur link as comment`
 
 #### `V1.0.2` Changes:
 `-- Bot now has a config function to sleep for x seconds`
+
+### `V1.1.0` Changes:
+`-- Bot now has different processing templates to choice from randomly`

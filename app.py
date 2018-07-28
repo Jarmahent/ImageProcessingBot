@@ -1,5 +1,6 @@
 from redditpy import redditpy
 import yaml
+import random
 from processing_handler.processing_handler import P5
 class RedditBot:
     def __init__(self):
@@ -15,6 +16,7 @@ class RedditBot:
         subreddit = config["processing.config"]["bot.config"]["reddit_subreddit"]
         self._sleep_interval = config["processing.config"]["bot.config"]["interval-seconds"]
         self._loop_boolean = config["processing.config"]["bot.config"]["loop"]
+        self._processing_templates = config["processing.config"]["processing.path"]["sketches"]
 
         self._redditClass = redditpy.Reddit(
         username=reddit_app_username,
@@ -42,15 +44,20 @@ class RedditBot:
 
             #Process that Image using processing ~Todo: pick a random sketch to process with...~
             #Push processed image into /media/processed folder
+            #Pick a random template
             sketch = P5()
             print("Running sketch...")
-            sketch.run_sketch("template_circle")
+            random_template = random.choice(self._processing_templates)
+            print("Picking random template")
+            print(f"Template picked is: {random_template}")
+            sketch.run_sketch(random_template)
 
 
             #Upload Image to Imgur
             #Change preprocessed to processed once the processing stage is complete
-            upload_to_imgur = self._redditClass.upload_imgur(image_path="./media/processed/processed.png")
             print("Uploading to imgur")
+            upload_to_imgur = self._redditClass.upload_imgur(image_path="./media/processed/processed.png")
+
 
             #Post processed image to /r/processingimages
             print("Posting to Reddit...")

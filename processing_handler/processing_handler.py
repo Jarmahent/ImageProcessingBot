@@ -16,4 +16,4 @@ class P5:
 
 if __name__ == "__main__":
     run = P5()
-    run.run_sketch("template_circle")
+    run.run_sketch("template_letters")

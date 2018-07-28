@@ -4,9 +4,7 @@ processing.config:
     sketch.path: ''
     sketches:
       - "template_circle"
-      - "template_rect"
-      - "template_circle_random"
-      - "template_circlerect"
+      - "template_letters"
 
   bot.config:
     loop: True
