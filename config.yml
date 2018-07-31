@@ -9,7 +9,7 @@ processing.config:
   bot.config:
     loop: True
     reddit_subreddit: "art"
-    interval-seconds: 30
+    interval-seconds: 300
 
 
   imgur.config:

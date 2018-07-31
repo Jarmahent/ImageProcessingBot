@@ -1,6 +1,6 @@
 ![alt text](https://i.imgur.com/yztjtDY.png "Logo Title Text 1")
 
-## Processing Images Bot for Reddit /r/processingimages `V1.0.2`
+## Processing Images Bot for Reddit /r/processingimages `V1.2.1`
 
 #### This bot uses the Processing language to take an a randomly selected image from any subreddit on Reddit.com and alters it.
 
@@ -48,4 +48,7 @@ processing.config:
 `-- Bot now has a config function to sleep for x seconds`
 
 ### `V1.1.0` Changes:
-`-- Bot now has different processing templates to choice from randomly`
+`-- Bot now has different processing templates to  from randomly`
+
+### `V1.2.1` Changes:
+`-- Bot now stores all the retrevied urls for future refrence`

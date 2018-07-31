@@ -4,6 +4,7 @@ import yaml
 from redditpy import redditpy
 import re
 from processing_handler.processing_handler import P5
+import sqlite3
 
 with open("config.yml", "r") as configFile:
     config = yaml.load(configFile)
@@ -60,3 +61,10 @@ class ProcessingPyTest(unittest.TestCase):
         sketch = P5()
         sketch.run_sketch("template_test")
         self.assertEqual(1, 1)
+
+
+
+class DbConnectionTest(unittest.TestCase):
+    def test_connection(self):
+        conn = sqlite3.connect("bot_db/bot.db")
+        self.assertIsInstance(conn, sqlite3.Connection)

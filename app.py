@@ -1,6 +1,7 @@
 from redditpy import redditpy
 import yaml
 import random
+from bot_db.connection import DbConnection
 from processing_handler.processing_handler import P5
 class RedditBot:
     def __init__(self):
@@ -27,10 +28,22 @@ class RedditBot:
         pimg_id=imgur_client_id,
         pimg_secret=imgur_app_secret)
 
+        self._checker = DbConnection()
     def run(self):
         try:
             #Retrieve A random Submission from the subreddit
             random_submission_url = self._redditClass.get_random_submission()
+
+            #If the URL is already in the DB then return None and let the while
+            # loop start the function again
+            if self._checker.urlIsDupe(random_submission_url) == True:
+                print("URL has already been used restarting")
+                return None
+
+            #Add url to sqlite3 db ~ bot.db ~
+            self._checker.insert_url(random_submission_url)
+
+
             #print(random_submission_url)
             print("Getting random url...")
 
@@ -39,7 +52,6 @@ class RedditBot:
             #Download that submission into /media/preprocessed
             print("Downloading to /media/preprocessed")
             preprocessed_download = self._redditClass.download_url(random_submission_url)
-            print(preprocessed_download)
 
 
             #Process that Image using processing ~Todo: pick a random sketch to process with...~

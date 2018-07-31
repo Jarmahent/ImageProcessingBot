@@ -1,27 +1,60 @@
-"""A setuptools based setup module.
-
-See:
-https://packaging.python.org/en/latest/distributing.html
-https://github.com/pypa/sampleproject
-"""
-
-# Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 from os import path
-# io.open is needed for projects that support Python 2.7
-# It ensures open() defaults to text mode with universal newlines,
-# and accepts an argument to specify the text encoding
-# Python 3 only projects can skip this import
+import subprocess
+import signal
+import distutils
 from io import open
-
+import os
 here = path.abspath(path.dirname(__file__))
 
-# Get the long description from the README file
+
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-# Arguments marked as "Required" below must be included for upload to PyPI.
-# Fields marked as "Optional" may be commented out.
+
+
+class VBuff(distutils.cmd.Command):
+    description = 'Activate Virtual frame buffer for Processing'
+    user_options = []
+
+    def initialize_options(self):
+        pass
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        """Run command."""
+        command = ['sudo Xvfb :1 -screen 0 1024x768x24 </dev/null & export DISPLAY=:1']
+
+        self.announce(
+            'Running command: %s' % str(command),
+            level=distutils.log.INFO)
+        pro = subprocess.Popen(command, stdout=subprocess.PIPE,
+                       shell=True, preexec_fn=os.setsid)
+        os.killpg(os.getpgid(pro.pid), signal.SIGTERM)
+
+
+class InstallVBuff(distutils.cmd.Command):
+
+  description = 'Install Virtual Frame Buffer dependencies'
+  user_options = []
+
+  def initialize_options(self):
+      pass
+  def finalize_options(self):
+      pass
+
+  def run(self):
+    """Run command."""
+    command = ['sudo apt-get install xvfb libxrender1 libxtst6 libxi6']
+
+    self.announce(
+        'Running command: %s' % str(command),
+        level=distutils.log.INFO)
+    pro = subprocess.Popen(command, stdout=subprocess.PIPE,
+                   shell=True, preexec_fn=os.setsid)
+    os.killpg(os.getpgid(pro.pid), signal.SIGTERM)
+
 
 setup(
     # This is the name of your project. The first time you publish this
@@ -43,7 +76,7 @@ setup(
     # For a discussion on single-sourcing the version across setup.py and the
     # project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='1.1.0',  # Required
+    version='1.2.1',  # Required
 
     # This is a one-line description or tagline of what your project does. This
     # corresponds to the "Summary" metadata field:
@@ -60,22 +93,6 @@ setup(
     # https://packaging.python.org/specifications/core-metadata/#description-optional
     long_description=long_description,  # Optional
 
-    # Denotes that our long_description is in Markdown; valid values are
-    # text/plain, text/x-rst, and text/markdown
-    #
-    # Optional if long_description is written in reStructuredText (rst) but
-    # required for plain-text or Markdown; if unspecified, "applications should
-    # attempt to render [the long_description] as text/x-rst; charset=UTF-8 and
-    # fall back to text/plain if it is not valid rst" (see link below)
-    #
-    # This field corresponds to the "Description-Content-Type" metadata field:
-    # https://packaging.python.org/specifications/core-metadata/#description-content-type-optional
-    long_description_content_type='text/markdown',  # Optional (see note above)
-
-    # This should be a valid link to your project's main homepage.
-    #
-    # This field corresponds to the "Home-Page" metadata field:
-    # https://packaging.python.org/specifications/core-metadata/#home-page-optional
     url='https://github.com/Jarmahent/ImageProcessingBot',  # Optional
 
     # This should be your name or the name of the organization which owns the
@@ -190,4 +207,8 @@ setup(
         'Say Thanks!': '',
         'Source': 'https://github.com/Jarmahent/ImageProcessingBot',
     },
+    cmdclass={
+        'vbuff': VBuff,
+        'installvbuff': InstallVBuff
+    }
 )
