@@ -42,7 +42,7 @@ class Reddit():
 
             self._pimg.get_image(id=imgur_url).download(
             path="./media/preprocessed",
-            name="unprocessed",
+            name="preprocessed",
             overwrite=True,
             size=None)
 
