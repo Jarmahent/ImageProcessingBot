@@ -51,4 +51,4 @@ processing.config:
 `-- Bot now has different processing templates to  from randomly`
 
 ### `V1.2.1` Changes:
-`-- Bot now stores all the retrevied urls for future refrence`
+`-- Bot now stores all the retrieved urls for future reference`
