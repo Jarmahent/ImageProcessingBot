@@ -43,13 +43,14 @@ class Reddit():
             self._pimg.get_image(id=imgur_url).download(
             path="./media/preprocessed",
             name="unprocessed",
-            overwrite=False,
+            overwrite=True,
             size=None)
 
-            print("Base Imgur URL")
+            return None
         if ".jpg" in url:
             request.urlretrieve(url, f"./media/preprocessed/preprocessed.jpg")
             print(" JPG format ")
+            return None
 
     def sleep(self, seconds=None):
         try:
