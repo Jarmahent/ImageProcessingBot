@@ -1,6 +1,6 @@
 def setup():
     global img
-    img = loadImage("media/preprocessed/mona.jpg")
+    img = loadImage("media/preprocessed/test.jpg")
     this.surface.setSize(img.width, img.height)
 
     #global output

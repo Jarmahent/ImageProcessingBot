@@ -1,5 +1,6 @@
 from praw import Reddit as PrawReddit
 import os
+import sys
 import string
 import random
 import time
@@ -34,24 +35,13 @@ class Reddit():
             return e
 
     def download_url(self, url):
-        #Download from url and place in pypics directory inside Pictures/
-        if not ".jpg" in url and "imgur" in url:
-            imgur_url = url.split('/')[-1].split('.')[0]
 
-            print(imgur_url)
-
-            self._pimg.get_image(id=imgur_url).download(
-            path="./media/preprocessed",
-            name="preprocessed",
-            overwrite=True,
-            size=None)
-
-            return None
         if ".jpg" in url:
-            request.urlretrieve(url, f"./media/preprocessed/preprocessed.jpg")
-            print(" JPG format ")
-            return None
-
+            download = request.urlretrieve(url, "media/preprocessed/preprocessed.jpg")
+            print(f" {url} \n JPG format ")
+            return download
+        else:
+            sys.exit(f"URL did not have .jpg as extension \n {url}")
     def sleep(self, seconds=None):
         try:
             print(f'Sleeping for {seconds} second(s)')

@@ -1,5 +1,8 @@
 from redditpy import redditpy
 import yaml
+import sys
+from colorama import Fore, Style
+from colorama import init as colorinit
 import random
 from bot_db.connection import DbConnection
 from processing_handler.processing_handler import P5
@@ -29,28 +32,33 @@ class RedditBot:
         pimg_secret=imgur_app_secret)
 
         self._checker = DbConnection()
+        colorinit(convert=False)
     def run(self):
         try:
+            print(f"{Fore.RED}Starting...!{Style.RESET_ALL}")
             #Retrieve A random Submission from the subreddit
             random_submission_url = self._redditClass.get_random_submission()
 
             #If the URL is already in the DB then return None and let the while
             # loop start the function again
             if self._checker.urlIsDupe(random_submission_url) == True:
-                print("URL has already been used restarting")
+                print(f"{Fore.RED}URL has already been used exiting..{Style.RESET_ALL}")
+                sys.exit("Duplicate URL")
                 return None
 
             #Add url to sqlite3 db ~ bot.db ~
+            print(f"{Fore.GREEN} Adding Url To Database {Style.RESET_ALL}")
             self._checker.insert_url(random_submission_url)
+            print(f"{Fore.GREEN}URL Added..!{Style.RESET_ALL}")
 
 
             #print(random_submission_url)
-            print("Getting random url...")
+            print(f"{Fore.GREEN}Getting random url...{Style.RESET_ALL}")
 
 
 
             #Download that submission into /media/preprocessed
-            print("Downloading to /media/preprocessed")
+            print(f"{Fore.GREEN}Downloading to {Fore.RED}/media/preprocessed{Style.RESET_ALL}")
             preprocessed_download = self._redditClass.download_url(random_submission_url)
 
 
@@ -58,30 +66,27 @@ class RedditBot:
             #Push processed image into /media/processed folder
             #Pick a random template
             sketch = P5()
-            print("Running sketch...")
+            print(f"{Fore.GREEN}Running sketch...{Style.RESET_ALL}")
             random_template = random.choice(self._processing_templates)
-            print("Picking random template")
-            print(f"Template picked is: {random_template}")
+            print(f"{Fore.GREEN}Picking random template{Style.RESET_ALL}")
+            print(f"{Fore.GREEN}Template picked is: {Fore.RED}{random_template}{Style.RESET_ALL}")
             sketch.run_sketch(random_template)
-
+            print(f"{Fore.GREEN}Sketch made!{Style.RESET_ALL}")
 
             #Upload Image to Imgur   MIGHT CHANGE SOON BECUASE COMPRESSION ISSUES
             #Change preprocessed to processed once the processing stage is complete
-            print("Uploading to imgur")
+            print(f"{Fore.GREEN}Uploading to imgur{Style.RESET_ALL}")
             upload_to_imgur = self._redditClass.upload_imgur(image_path="./media/processed/processed.png")
 
 
             #Post processed image to /r/processingimages
-            print("Posting to Reddit...")
+            print(f"{Fore.GREEN}Posting to Reddit...{Style.RESET_ALL}")
             post_to_reddit = self._redditClass.post_image(upload_to_imgur.link)
-            print(post_to_reddit)
+            print(f"{Fore.GREEN}ID: {Fore.RED}{post_to_reddit}{Style.RESET_ALL}")
 
             #Post a comment on the new Submission with the link to the original image
             comment_info = self._redditClass.comment_info(id=str(post_to_reddit), data=f"Original Image: {random_submission_url}")
 
-            #Sleep for x seconds
-            if self._loop_boolean == True:
-                self._redditClass.sleep(self._sleep_interval)
 
             return post_to_reddit
         except Exception as e:
@@ -93,9 +98,4 @@ class RedditBot:
 
 if __name__ == "__main__":
     bot = RedditBot()
-    with open("config.yml", "r") as ymlconfig:
-        loop = yaml.load(ymlconfig)
-    loop_boolean = loop["processing.config"]["bot.config"]["loop"]
-    while True:
-        bot.run()
-        if loop_boolean == False: break
+    bot.run()

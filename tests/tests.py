@@ -33,7 +33,7 @@ class RedditPyTest(unittest.TestCase):
         self.assertEqual(len(HttpsMatch), 1)
 
     def test_post_imgur(self):
-        image_url = str(r.upload_imgur("./media/preprocessed/test.png").link)
+        image_url = str(r.upload_imgur("./media/preprocessed/test.jpg").link)
         HttpsMatch = re.findall(r"(?:http|ftp)s?:\/\/", image_url)
         self.assertEqual(len(HttpsMatch), 1)
 
@@ -62,6 +62,10 @@ class ProcessingPyTest(unittest.TestCase):
         sketch.run_sketch("template_test")
         self.assertEqual(1, 1)
 
+    def test_processing_sketch_letters(self):
+        sketch = P5()
+        sketch.run_sketch("template_test_letters")
+        self.assertEqual(1, 1)
 
 
 class DbConnectionTest(unittest.TestCase):

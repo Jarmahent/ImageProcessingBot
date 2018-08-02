@@ -1,17 +1,17 @@
 
 
 def setup():
-    global mosaicSize
     global pixelSkip
     global alphabet
     global alphabetSplit
     global img
 
     pixelSkip = 10
-    alphabetSplit = list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    alphabetSplit = list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()")
 
     img = loadImage("media/preprocessed/preprocessed.jpg")
     noStroke()
+    noLoop()
     this.surface.setSize(img.width, img.height)
 
 
@@ -26,5 +26,5 @@ def draw():
             text(random_letter, x, y)
 
     save("../../media/processed/processed.png")
-    noLoop();
+
     exit()
