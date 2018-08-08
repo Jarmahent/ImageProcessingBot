@@ -9,7 +9,7 @@ def setup():
     pixelSkip = 10
     alphabetSplit = list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
-    img = loadImage("media/preprocessed/test.jpg")
+    img = loadImage("media/preprocessed/preprocessed.jpg")
     noStroke()
     noLoop()
     this.surface.setSize(img.width, img.height)

@@ -14,7 +14,6 @@ reddit_client_id = config["processing.config"]["reddit.config"]["reddit_client_i
 reddit_app_secret = config["processing.config"]["reddit.config"]["reddit_app_secret"]
 reddit_app_username = config["processing.config"]["reddit.config"]["reddit_app_username"]
 reddit_app_password = config["processing.config"]["reddit.config"]["reddit_app_password"]
-sleep_interval = config["processing.config"]["bot.config"]["interval-seconds"]
 
 
 r = redditpy.Reddit(
@@ -33,7 +32,7 @@ class RedditPyTest(unittest.TestCase):
         self.assertEqual(len(HttpsMatch), 1)
 
     def test_post_imgur(self):
-        image_url = str(r.upload_imgur("./media/preprocessed/test.jpg").link)
+        image_url = str(r.upload_imgur("./media/preprocessed/preprocessed.jpg").link)
         HttpsMatch = re.findall(r"(?:http|ftp)s?:\/\/", image_url)
         self.assertEqual(len(HttpsMatch), 1)
 
@@ -50,7 +49,7 @@ class RedditPyTest(unittest.TestCase):
         self.assertEqual(1, 1)
     def test_yaml_list(self):
         yaml_list = config["processing.config"]["processing.path"]["sketches"]
-        self.assertEqual(len(yaml_list), 2)
+        self.assertEqual(len(yaml_list), 3)
 
 
 class ProcessingPyTest(unittest.TestCase):
@@ -66,7 +65,11 @@ class ProcessingPyTest(unittest.TestCase):
         sketch = P5()
         sketch.run_sketch("template_test_letters")
         self.assertEqual(1, 1)
-
+    # python -m unittest tests.tests.ProcessingPyTest.test_processing_sketch_lines
+    def test_processing_sketch_lines(self):
+        sketch = P5()
+        sketch.run_sketch("template_line")
+        self.assertEqual(1, 1)
 
 class DbConnectionTest(unittest.TestCase):
     def test_connection(self):

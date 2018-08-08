@@ -7,7 +7,7 @@ import random
 from bot_db.connection import DbConnection
 from processing_handler.processing_handler import P5
 class RedditBot:
-    def __init__(self):
+    def __init__(self, subreddit):
         with open("config.yml", "r") as ymlconfig:
             config = yaml.load(ymlconfig)
 
@@ -17,9 +17,7 @@ class RedditBot:
         reddit_app_secret = config["processing.config"]["reddit.config"]["reddit_app_secret"]
         reddit_app_username = config["processing.config"]["reddit.config"]["reddit_app_username"]
         reddit_app_password = config["processing.config"]["reddit.config"]["reddit_app_password"]
-        subreddit = config["processing.config"]["bot.config"]["reddit_subreddit"]
-        self._sleep_interval = config["processing.config"]["bot.config"]["interval-seconds"]
-        self._loop_boolean = config["processing.config"]["bot.config"]["loop"]
+
         self._processing_templates = config["processing.config"]["processing.path"]["sketches"]
 
         self._redditClass = redditpy.Reddit(
@@ -36,6 +34,7 @@ class RedditBot:
     def run(self):
         try:
             print(f"{Fore.RED}Starting...!{Style.RESET_ALL}")
+
             #Retrieve A random Submission from the subreddit
             random_submission_url = self._redditClass.get_random_submission()
 
@@ -97,5 +96,10 @@ class RedditBot:
 
 
 if __name__ == "__main__":
-    bot = RedditBot()
+    with open("config.yml", "r") as subredditconf:
+        sconfig = yaml.load(subredditconf)
+    subreddits = sconfig["processing.config"]["bot.config"]["reddit_subreddit"]
+    random_subreddit = random.choice(subreddits)
+    print(f"Picking random Image from {random_subreddit}")
+    bot = RedditBot(random_subreddit)
     bot.run()

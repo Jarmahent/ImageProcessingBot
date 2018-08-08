@@ -42,6 +42,7 @@ class Reddit():
             return download
         else:
             sys.exit(f"URL did not have .jpg as extension \n {url}")
+
     def sleep(self, seconds=None):
         try:
             print(f'Sleeping for {seconds} second(s)')
@@ -84,7 +85,7 @@ class Reddit():
             image_upload = self._pimg.upload_image(image_path, title=self.generate_name())
             return image_upload
         except Exception as e:
-            return e
+            sys.exit(e)
 
     def comment_info(self, id=None, data=None):
         try:

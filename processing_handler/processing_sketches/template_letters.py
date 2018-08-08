@@ -7,7 +7,7 @@ def setup():
     global img
 
     pixelSkip = 10
-    alphabetSplit = list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()")
+    alphabetSplit = list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ)")
 
     img = loadImage("media/preprocessed/preprocessed.jpg")
     noStroke()
