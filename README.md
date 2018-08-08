@@ -49,7 +49,7 @@ processing.config:
 `-- Bot now has a config function to sleep for x seconds`
 
 ### `V1.1.0` Changes:
-`-- Bot now has different processing templates to  from randomly`
+`-- Bot now has different processing templates to choose from randomly`
 
 ### `V1.2.1` Changes:
 `-- Bot now stores all the retrieved urls for future reference`
