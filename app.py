@@ -82,6 +82,7 @@ class RedditBot:
             print(f"{Fore.GREEN}Posting to Reddit...{Style.RESET_ALL}")
             post_to_reddit = self._redditClass.post_image(upload_to_imgur.link)
             print(f"{Fore.GREEN}ID: {Fore.RED}{post_to_reddit}{Style.RESET_ALL}")
+            print(f"{Fore.GREEN}URL: {Fore.RED}https://www.reddit.com/r/processingimages/comments/{post_to_reddit}{Style.RESET_ALL}")
 
             #Post a comment on the new Submission with the link to the original image
             comment_info = self._redditClass.comment_info(id=str(post_to_reddit), data=f"Original Image: {random_submission_url}")

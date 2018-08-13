@@ -10,16 +10,15 @@ processing.config:
       - "art"
       - "pics"
       - "itookapicture"
-      - "earthporn"
 
 
   imgur.config:
-    imgur_client_id: ""
-    imgur_app_secret: ""
+    imgur_client_id: "e6158b5ee68c0c2"
+    imgur_app_secret: "ace07385bb95e9cf63edb4e2374efac571815b49"
     imgur_access_token: ""
 
   reddit.config:
-    reddit_app_username: ""
-    reddit_app_password: ""
-    reddit_client_id: ""
-    reddit_app_secret: ""
+    reddit_app_username: "ProcessingImagesBot"
+    reddit_app_password: "kilo0131"
+    reddit_client_id: "ISPc2iqSWSzHmQ"
+    reddit_app_secret: "54igoiMvmZzmv3QdkS0TmbDx4d0"
