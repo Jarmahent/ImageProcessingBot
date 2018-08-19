@@ -7,6 +7,10 @@
 #### Some premade sketches will be used from https://www.openprocessing.org/ please check it out.
 
 Using the Processing.py Java compiler I am writing processing code in python.
+Check out the subreddit:'
+<br/>
+https://reddit.com/r/processingimages
+<br/>
 
 ### `Config.yml` If you wish to use this bot here is the configuration.
 ```yaml
