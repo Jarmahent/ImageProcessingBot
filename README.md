@@ -9,7 +9,6 @@
 Using the Processing.py Java compiler I am writing processing code in python.
 Check out the subreddit:
 
-<br/>
 https://reddit.com/r/processingimages
 <br/>
 
