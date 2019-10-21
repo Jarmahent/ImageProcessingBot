@@ -8,4 +8,4 @@ pyimgur==0.6.0
 PyYAML==4.2b1
 requests>=2.20.0
 update-checker==0.16
-urllib3==1.23
+urllib3==1.24.2
